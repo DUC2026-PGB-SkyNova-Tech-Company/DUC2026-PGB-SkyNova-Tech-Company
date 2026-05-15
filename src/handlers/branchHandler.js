@@ -1,4 +1,4 @@
-const { Branch, User } = require('../models');
+const { Branch, User } = require('../models/simpleDB');
 
 async function selectBranch(bot, msg) {
   const chatId = msg.chat.id;
@@ -30,10 +30,10 @@ async function selectBranch(bot, msg) {
 async function handleBranchSelection(bot, query) {
   const chatId = query.message.chat.id;
   const userId = query.from.id;
-  const branchId = query.data.replace('branch_', '');
+  const branchId = parseInt(query.data.replace('branch_', ''));
   
   try {
-    const branch = await Branch.findByPk(branchId);
+    const branch = await Branch.findById(branchId);
     
     if (!branch) {
       await bot.answerCallbackQuery(query.id, { text: 'Branch not found!' });

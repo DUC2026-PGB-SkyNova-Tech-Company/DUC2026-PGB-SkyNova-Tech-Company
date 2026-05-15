@@ -1,10 +1,22 @@
 require('dotenv').config();
 const TelegramBot = require('node-telegram-bot-api');
 const express = require('express');
-const { initDatabase } = require('./models');
+const { initDatabase } = require('./models/simpleDB');
 const { registerHandlers } = require('./handlers');
 
 const app = express();
+
+// Check if bot token is configured
+if (!process.env.TELEGRAM_BOT_TOKEN || process.env.TELEGRAM_BOT_TOKEN === 'your_telegram_bot_token_here') {
+  console.error('❌ TELEGRAM_BOT_TOKEN not configured!');
+  console.log('\n📝 Please follow these steps:');
+  console.log('1. Open Telegram and search for @BotFather');
+  console.log('2. Send /newbot and follow instructions');
+  console.log('3. Copy the token and add it to .env file');
+  console.log('4. Update TELEGRAM_BOT_TOKEN in .env\n');
+  process.exit(1);
+}
+
 const bot = new TelegramBot(process.env.TELEGRAM_BOT_TOKEN, { polling: true });
 
 // Initialize database
