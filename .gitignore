@@ -19,6 +19,10 @@ env/
 logs/
 *.log
 
+# PM2
+.pm2/
+ecosystem.config.js.backup
+
 # Database
 *.db
 *.sqlite
