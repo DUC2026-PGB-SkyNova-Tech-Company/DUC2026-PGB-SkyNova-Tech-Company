@@ -39,9 +39,6 @@ async function initializeApp() {
   }
 }
 
-// Register bot command handlers
-registerHandlers(bot);
-
 // Express webhook endpoint (optional, for production)
 app.use(express.json());
 app.post('/webhook/bakong', async (req, res) => {
