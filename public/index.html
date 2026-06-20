@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bakong Vendor Dashboard - SkyNova Tech</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-bolt"></i>
+                <span>SkyNova Tech</span>
+            </div>
+            <nav class="nav">
+                <a href="#dashboard" class="nav-link active">
+                    <i class="fas fa-chart-line"></i> Dashboard
+                </a>
+                <a href="#transactions" class="nav-link">
+                    <i class="fas fa-receipt"></i> Transactions
+                </a>
+                <a href="#branches" class="nav-link">
+                    <i class="fas fa-store"></i> Branches
+                </a>
+                <a href="#analytics" class="nav-link">
+                    <i class="fas fa-chart-pie"></i> Analytics
+                </a>
+            </nav>
+            <div class="header-actions">
+                <button class="btn-icon" id="refreshBtn">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+                <div class="status-indicator">
+                    <span class="status-dot online"></span>
+                    <span>Online</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Page Title -->
+            <div class="page-header">
+                <div>
+                    <h1 class="page-title">Dashboard Overview</h1>
+                    <p class="page-subtitle">Real-time payment tracking and analytics</p>
+                </div>
+                <div class="time-selector">
+                    <button class="time-btn active" data-period="today">Today</button>
+                    <button class="time-btn" data-period="week">Week</button>
+                    <button class="time-btn" data-period="month">Month</button>
+                </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div class="stat-content">
+                        <p class="stat-label">Total Revenue</p>
+                        <h2 class="stat-value" id="totalRevenue">$0.00</h2>
+                        <p class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> <span id="revenueChange">0%</span> vs yesterday
+                        </p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div class="stat-content">
+                        <p class="stat-label">Transactions</p>
+                        <h2 class="stat-value" id="totalTransactions">0</h2>
+                        <p class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> <span id="transactionsChange">0%</span> vs yesterday
+                        </p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        <i class="fas fa-qrcode"></i>
+                    </div>
+                    <div class="stat-content">
+                        <p class="stat-label">KHQR Payments</p>
+                        <h2 class="stat-value" id="khqrPayments">0</h2>
+                        <p class="stat-change">
+                            <span id="khqrPercentage">0%</span> of total
+                        </p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <div class="stat-content">
+                        <p class="stat-label">Cash Payments</p>
+                        <h2 class="stat-value" id="cashPayments">0</h2>
+                        <p class="stat-change">
+                            <span id="cashPercentage">0%</span> of total
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Row -->
+            <div class="charts-row">
+                <div class="chart-card">
+                    <div class="card-header">
+                        <h3 class="card-title">Revenue Trend</h3>
+                        <div class="card-actions">
+                            <button class="btn-sm">
+                                <i class="fas fa-download"></i> Export
+                            </button>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <div class="card-header">
+                        <h3 class="card-title">Payment Methods</h3>
+                        <div class="card-actions">
+                            <button class="btn-sm">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="paymentMethodChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Branches & Recent Transactions -->
+            <div class="content-row">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Branch Performance</h3>
+                        <button class="btn-sm" id="viewAllBranches">
+                            View All <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                    <div class="branches-list" id="branchesList">
+                        <!-- Dynamic content -->
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Recent Transactions</h3>
+                        <button class="btn-sm" id="viewAllTransactions">
+                            View All <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                    <div class="transactions-list" id="transactionsList">
+                        <!-- Dynamic content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 SkyNova Tech Company. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Support</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

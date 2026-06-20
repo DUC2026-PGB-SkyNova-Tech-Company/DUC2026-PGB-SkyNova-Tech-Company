@@ -1,0 +1,46 @@
+[
+  {
+    "id": 1,
+    "amount": 50000,
+    "currency": "KHR",
+    "description": "Test payment",
+    "branchId": 1,
+    "userId": 803095976,
+    "paymentMethod": "CASH",
+    "verificationStatus": "verified",
+    "createdAt": "2026-05-15T10:00:49.741Z"
+  },
+  {
+    "id": 2,
+    "amount": 60000,
+    "currency": "KHR",
+    "description": "Test payment",
+    "branchId": 1,
+    "userId": 803095976,
+    "paymentMethod": "QR",
+    "verificationStatus": "verified",
+    "createdAt": "2026-05-15T10:01:24.437Z"
+  },
+  {
+    "id": 3,
+    "amount": 80000,
+    "currency": "KHR",
+    "description": "Test payment",
+    "branchId": 2,
+    "userId": 803095976,
+    "paymentMethod": "QR",
+    "verificationStatus": "verified",
+    "createdAt": "2026-05-15T10:59:29.586Z"
+  },
+  {
+    "id": 4,
+    "amount": 20000,
+    "currency": "KHR",
+    "description": "Payment",
+    "branchId": 1,
+    "userId": 803095976,
+    "paymentMethod": "QR",
+    "verificationStatus": "verified",
+    "createdAt": "2026-06-20T01:38:05.500Z"
+  }
+]

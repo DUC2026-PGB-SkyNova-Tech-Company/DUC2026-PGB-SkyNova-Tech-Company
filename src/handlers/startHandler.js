@@ -9,24 +9,28 @@ async function startHandler(bot, msg) {
 👋 សួស្តី ${userName}! Welcome to Bakong Vendor Bot!
 
 🎯 **What I can do:**
-• 📸 Record KHQR payments (send screenshot)
+• 📸 Record KHQR payments (QR or Cash)
 • 📊 Generate sales reports
 • 🏪 Track sales by branch
 • 💰 Real-time payment verification
+• 💱 Show amounts in KHR and USD
 
 **Quick Commands:**
 /record - Record a new payment
 /report - View sales reports
 /daily - Today's sales summary
+/weekly - This week's sales summary
+/monthly - This month's sales summary
 /branch - Select your branch
 /help - Show this message
 
-${isAdmin(userId) ? '\n🔐 **Admin Access Granted**\n' : ''}
+${isAdmin(userId) ? '\n🔐 **Admin Commands:**\n/admin - Admin panel\n' : ''}
 
 **Getting Started:**
 1. Select your branch: /branch
-2. Send KHQR payment screenshot
-3. Confirm transaction details
+2. Send payment amount and description
+3. Choose payment method (QR or Cash)
+4. Confirm transaction
 
 Let's get started! 🚀
   `;
@@ -36,6 +40,7 @@ Let's get started! 🚀
       keyboard: [
         ['📸 Record Payment', '📊 View Reports'],
         ['🏪 Select Branch', '📅 Daily Summary'],
+        ['📆 Weekly Summary', '📊 Monthly Summary'],
         ['❓ Help']
       ],
       resize_keyboard: true

@@ -1,0 +1,21 @@
+[
+  {
+    "id": 1,
+    "telegramId": 803095976,
+    "username": "Narith_CH",
+    "firstName": "CHHOEURT Narith-DUC-PG-B-20240150",
+    "currentBranchId": 1,
+    "isAdmin": false,
+    "createdAt": "2026-05-15T09:59:53.215Z",
+    "updatedAt": "2026-06-20T01:37:35.147Z"
+  },
+  {
+    "id": 2,
+    "telegramId": 5515425189,
+    "username": "Minea_IT",
+    "firstName": "VANG",
+    "currentBranchId": 1,
+    "isAdmin": false,
+    "createdAt": "2026-06-20T01:41:39.006Z"
+  }
+]

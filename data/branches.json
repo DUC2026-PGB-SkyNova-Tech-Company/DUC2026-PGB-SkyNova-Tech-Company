@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "SkyNova-Tech-Company A",
+    "location": "Phnom Penh",
+    "isActive": true,
+    "createdAt": "2026-05-15T09:46:33.469Z"
+  },
+  {
+    "id": 2,
+    "name": "SkyNova-Tech-Company B",
+    "location": "Phnom Penh",
+    "isActive": true,
+    "createdAt": "2026-05-15T09:46:33.470Z"
+  },
+  {
+    "id": 3,
+    "name": "SkyNova-Tech-Company C",
+    "location": "Phnom Penh",
+    "isActive": true,
+    "createdAt": "2026-05-15T09:46:33.470Z"
+  }
+]
