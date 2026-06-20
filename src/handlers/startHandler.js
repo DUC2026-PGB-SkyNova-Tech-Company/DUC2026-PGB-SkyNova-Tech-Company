@@ -1,5 +1,3 @@
-const { isAdmin } = require('../utils/authUtils');
-
 async function startHandler(bot, msg) {
   const chatId = msg.chat.id;
   const userId = msg.from.id;

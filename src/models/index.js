@@ -1,46 +1,25 @@
-const { Sequelize } = require('sequelize');
-const path = require('path');
+// Database adapter - supports PostgreSQL, MongoDB, or JSON files
+const USE_POSTGRES = process.env.USE_POSTGRES === 'true';
+const USE_MONGODB = process.env.USE_MONGODB === 'true';
 
-// Initialize Sequelize
-const sequelize = new Sequelize({
-  dialect: 'sqlite',
-  storage: path.join(__dirname, '../../sales.db'),
-  logging: false
-});
+let db;
 
-// Import models
-const Branch = require('./Branch')(sequelize);
-const User = require('./User')(sequelize);
-const Transaction = require('./Transaction')(sequelize);
-
-// Define relationships
-Branch.hasMany(Transaction, { foreignKey: 'branchId' });
-Transaction.belongsTo(Branch, { foreignKey: 'branchId' });
-
-User.hasMany(Transaction, { foreignKey: 'userId' });
-Transaction.belongsTo(User, { foreignKey: 'userId' });
-
-User.belongsTo(Branch, { as: 'CurrentBranch', foreignKey: 'currentBranchId' });
-
-// Initialize database
-async function initDatabase() {
-  await sequelize.sync();
+if (USE_POSTGRES) {
+  console.log('📊 Using PostgreSQL database');
+  db = require('./postgresModels');
   
-  // Seed default branches if none exist
-  const branchCount = await Branch.count();
-  if (branchCount === 0) {
-    const branches = process.env.BRANCHES?.split(',') || ['Branch1', 'Branch2', 'Branch3'];
-    await Branch.bulkCreate(
-      branches.map(name => ({ name: name.trim() }))
-    );
-    console.log('✅ Default branches created');
-  }
+  // Initialize PostgreSQL connection
+  db.connectDatabase().catch(err => {
+    console.error('Failed to connect to PostgreSQL:', err);
+    console.log('⚠️ Falling back to JSON file database');
+    db = require('./simpleDB');
+  });
+} else if (USE_MONGODB) {
+  console.log('📊 Using MongoDB database');
+  db = require('./mongooseModels');
+} else {
+  console.log('📊 Using JSON file database');
+  db = require('./simpleDB');
 }
 
-module.exports = {
-  sequelize,
-  Branch,
-  User,
-  Transaction,
-  initDatabase
-};
+module.exports = db;
