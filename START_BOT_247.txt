@@ -1,0 +1,93 @@
+╔═══════════════════════════════════════════════════════════════════════╗
+║                                                                       ║
+║              🚀 START YOUR BOT 24/7 - QUICK GUIDE                    ║
+║                                                                       ║
+╚═══════════════════════════════════════════════════════════════════════╝
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📋 BEFORE YOU START:
+
+✅ PM2 installed: YES
+✅ Scripts ready: YES
+✅ Configuration files: YES
+✅ Documentation: YES
+✅ Pushed to GitHub: YES
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🚀 HOW TO START (Choose ONE method):
+
+METHOD 1: Double-Click (Easiest)
+   📁 Double-click: start-247.bat
+
+METHOD 2: Command Line
+   > npm run pm2:start
+
+METHOD 3: Direct PM2
+   > pm2 start ecosystem.config.js
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ VERIFY IT'S RUNNING:
+
+   > pm2 status
+
+   Should show:
+   ┌─────┬──────────────┬─────────┬─────────┐
+   │ id  │ name         │ status  │ uptime  │
+   ├─────┼──────────────┼─────────┼─────────┤
+   │ 0   │ bakong-bot   │ online  │ 5s      │
+   └─────┴──────────────┴─────────┴─────────┘
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📊 USEFUL COMMANDS:
+
+   View Status:     pm2 status
+   View Logs:       pm2 logs bakong-bot
+   Monitor Live:    pm2 monit
+   Restart:         pm2 restart bakong-bot
+   Stop:            pm2 stop bakong-bot
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🌐 ACCESS YOUR BOT:
+
+   Telegram:        Open your bot and send /start
+   Web Dashboard:   http://localhost:3001
+   Health Check:    http://localhost:3001/health
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚡ FEATURES:
+
+   ✅ Auto-restart on crash
+   ✅ Auto-restart daily at 3 AM
+   ✅ Memory management (restart at 500MB)
+   ✅ Runs in background (survives terminal close)
+   ✅ Detailed logging (./logs/)
+   ✅ Real-time monitoring
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📚 DOCUMENTATION:
+
+   Quick Guide:     RUN_247_INSTRUCTIONS.md
+   Cloud Deploy:    DEPLOYMENT_247.md
+   Setup Complete:  247_SETUP_COMPLETE.md
+   Main Docs:       README.md
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎉 YOUR BOT IS READY FOR 24/7 OPERATION!
+
+Just run:  start-247.bat
+
+Then enjoy your bot running 24/7! 🚀
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+GitHub: https://github.com/DUC2026-PGB-SkyNova-Tech-Company/DUC2026-PGB-SkyNova-Tech-Company
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
