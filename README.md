@@ -18,6 +18,8 @@ A Telegram bot for tracking KHQR payments across multiple street food/retail bra
 - 📱 **Mobile-friendly** - works on any device with Telegram
 - 📉 **Interactive charts** and visual analytics
 - ⚡ **Auto-refresh dashboard** every 30 seconds
+- 🔄 **24/7 operation** with PM2 process manager
+- 🚀 **Auto-restart** on crash or daily schedule
 
 ## 🚀 Quick Start
 
@@ -72,6 +74,41 @@ A Telegram bot for tracking KHQR payments across multiple street food/retail bra
 
    📖 See [UI_GUIDE.md](UI_GUIDE.md) for full dashboard documentation
    ✨ See [DASHBOARD_FEATURES.md](DASHBOARD_FEATURES.md) for feature details
+
+## 🔄 Run Bot 24/7 (Recommended)
+
+### Quick 24/7 Setup
+
+**Option 1: Double-click the script**
+```
+start-247.bat
+```
+
+**Option 2: Use npm command**
+```bash
+npm run pm2:start
+```
+
+**Check if running:**
+```bash
+pm2 status
+```
+
+**View logs:**
+```bash
+pm2 logs bakong-bot
+```
+
+📖 **Full 24/7 Guide:** See [RUN_247_INSTRUCTIONS.md](RUN_247_INSTRUCTIONS.md)
+☁️ **Cloud Deployment:** See [DEPLOYMENT_247.md](DEPLOYMENT_247.md)
+
+### 24/7 Features:
+- ✅ Auto-restart on crash
+- ✅ Auto-restart daily at 3 AM
+- ✅ Memory management (restarts if > 500MB)
+- ✅ Runs in background (survives terminal close)
+- ✅ Logs all activity
+- ✅ Live monitoring dashboard
 
 ## 📖 How to Use
 
