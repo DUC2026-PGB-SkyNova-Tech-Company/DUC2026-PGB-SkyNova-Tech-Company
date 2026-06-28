@@ -52,12 +52,19 @@ async function showStatistics(bot, query) {
     const totalAmount = transactions.reduce((sum, t) => sum + parseFloat(t.amount), 0);
     const todayAmount = todayTransactions.reduce((sum, t) => sum + parseFloat(t.amount), 0);
     
-    const qrCount = transactions.filter(t => t.paymentMethod === 'QR').length;
+    const qrCount   = transactions.filter(t => t.paymentMethod === 'QR').length;
     const cashCount = transactions.filter(t => t.paymentMethod === 'CASH').length;
-    
+    const txCount   = transactions.length;
+
     const totalAmounts = formatBothCurrencies(totalAmount);
     const todayAmounts = formatBothCurrencies(todayAmount);
-    
+
+    // Guard against division by zero when no transactions exist
+    const qrPct   = txCount > 0 ? ((qrCount / txCount) * 100).toFixed(1) : '0.0';
+    const cashPct = txCount > 0 ? ((cashCount / txCount) * 100).toFixed(1) : '0.0';
+    const avgPerTxn  = txCount > 0 ? formatBothCurrencies(totalAmount / txCount).khr : '0 ៛';
+    const avgPerDay  = formatBothCurrencies(totalAmount / 30).khr;
+
     const stats = `
 ╔═══════════════════════════════╗
 ║       SYSTEM STATISTICS       ║
@@ -68,7 +75,7 @@ async function showStatistics(bot, query) {
 
 👥 **Users:** ${users.length}
 🏪 **Branches:** ${branches.length}
-📝 **Total Transactions:** ${transactions.length}
+📝 **Total Transactions:** ${txCount}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -84,14 +91,14 @@ async function showStatistics(bot, query) {
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 📱 **PAYMENT METHODS**
-   QR Payments: ${qrCount} (${((qrCount/transactions.length)*100).toFixed(1)}%)
-   Cash Payments: ${cashCount} (${((cashCount/transactions.length)*100).toFixed(1)}%)
+   QR Payments: ${qrCount} (${qrPct}%)
+   Cash Payments: ${cashCount} (${cashPct}%)
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 📈 **AVERAGES**
-   Avg per transaction: ${formatBothCurrencies(totalAmount/transactions.length).khr}
-   Avg per day: ${formatBothCurrencies(totalAmount/30).khr}
+   Avg per transaction: ${avgPerTxn}
+   Avg per day: ${avgPerDay}
 
 ╚═══════════════════════════════╝
     `;

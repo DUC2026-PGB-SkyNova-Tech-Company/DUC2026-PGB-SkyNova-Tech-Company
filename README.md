@@ -1,5 +1,9 @@
 # Bakong-Integrated Micro-Vendor Bot
 
+> 🤖 **Live Production Bot:** [`@SkyNovaTech_Bot`](https://t.me/SkyNovaTech_Bot)
+>
+> 🌐 **Web Dashboard:** `http://localhost:3001` (or `http://YOUR_PC_IP:3001` from other devices)
+
 A Telegram bot for tracking KHQR payments across multiple street food/retail branches in Phnom Penh.
 
 ## 🎯 Problem Solved
@@ -75,40 +79,63 @@ A Telegram bot for tracking KHQR payments across multiple street food/retail bra
    📖 See [UI_GUIDE.md](UI_GUIDE.md) for full dashboard documentation
    ✨ See [DASHBOARD_FEATURES.md](DASHBOARD_FEATURES.md) for feature details
 
-## 🔄 Run Bot 24/7 (Recommended)
+## 🔄 Run Bot 24/7 — One Click
 
-### Quick 24/7 Setup
-
-**Option 1: Double-click the script**
+### ▶️ Start (keeps running after you close the window)
 ```
-start-247.bat
+Double-click: start-bot.bat
+```
+That's it. The bot starts with PM2, survives reboots, and auto-restarts on crash.
+
+### ⬛ Stop
+```
+Double-click: stop-bot.bat
 ```
 
-**Option 2: Use npm command**
+### 📊 Check Status / Logs
+```
+Double-click: status-bot.bat
+```
+
+### Manual PM2 commands (from any terminal)
 ```bash
-npm run pm2:start
+pm2 status                        # see if bot is online
+pm2 logs SkyNovaTech_Bot          # live log stream
+pm2 restart SkyNovaTech_Bot       # restart
+pm2 stop SkyNovaTech_Bot          # stop
+pm2 monit                         # real-time CPU/memory monitor
 ```
 
-**Check if running:**
-```bash
-pm2 status
-```
-
-**View logs:**
-```bash
-pm2 logs bakong-bot
-```
-
-📖 **Full 24/7 Guide:** See [RUN_247_INSTRUCTIONS.md](RUN_247_INSTRUCTIONS.md)
-☁️ **Cloud Deployment:** See [DEPLOYMENT_247.md](DEPLOYMENT_247.md)
-
-### 24/7 Features:
+### 24/7 Features
 - ✅ Auto-restart on crash
-- ✅ Auto-restart daily at 3 AM
-- ✅ Memory management (restarts if > 500MB)
-- ✅ Runs in background (survives terminal close)
-- ✅ Logs all activity
-- ✅ Live monitoring dashboard
+- ✅ Auto-restart daily at 3 AM (prevents memory drift)
+- ✅ Restarts if memory exceeds 500 MB
+- ✅ Survives terminal close and Windows reboot
+- ✅ All logs saved to `./logs/`
+
+## 📱 Access from ALL Devices
+
+The **Telegram bot** (`@SkyNovaTech_Bot`) works on **every device** automatically — phone, tablet, laptop — because it runs through Telegram's cloud servers. No setup needed on other devices.
+
+The **web dashboard** is accessible from any device on the same Wi-Fi network:
+
+1. Find your PC's local IP address:
+   ```
+   ipconfig
+   ```
+   Look for **IPv4 Address** — e.g. `192.168.1.5`
+
+2. On any phone/tablet/laptop on the same network, open a browser and go to:
+   ```
+   http://192.168.1.5:3001
+   ```
+
+3. For access from **anywhere in the world** (outside your home network), use [ngrok](https://ngrok.com/):
+   ```bash
+   # Install ngrok, then run:
+   ngrok http 3001
+   # You'll get a public URL like: https://abc123.ngrok.io
+   ```
 
 ## 📖 How to Use
 
@@ -266,6 +293,19 @@ npm run dev
 ```bash
 npm test
 ```
+
+### Run tests with coverage
+```bash
+npm test -- --coverage
+```
+
+## 📋 Wiki Documentation
+
+| Page | Description |
+|------|-------------|
+| [User Guide](wiki/user-guide.md) | Complete user guide with button maps — Week 10 |
+| [Testing Report](wiki/testing-report.md) | Unit, integration and E2E test report |
+| [Test Matrix](wiki/test-matrix.md) | 20 verified test cases (boundary, negative, happy path) — Week 11 |
 
 ## 🤝 Contributing
 

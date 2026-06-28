@@ -15,6 +15,30 @@ This project follows [Semantic Versioning](https://semver.org/): `MAJOR.MINOR.PA
 
 ---
 
+## [1.1.0] - 2026-06-28 — Week 10 & Week 11 Milestone Release
+
+### Week 11 Deliverables
+- **GitHub Wiki — Test Matrix Page:** Published complete verification log with 20 distinct test cases covering boundary tests, negative/attack scenarios, and happy path flows (`wiki/test-matrix.md`)
+- **Zero-Crash Hardening:** All handlers verified to call `answerCallbackQuery` before async operations; all try/catch blocks confirmed; tested against random text, script injection, zero amounts, and multi-click attacks — server does not crash
+- **Production Staging Link:** Live bot handle added to README.md header
+- **Final PR Merges:** All development branches merged; GitHub Project Board updated with all items moved to Done column
+
+### Week 10 Deliverables
+- **GitHub Wiki — User Guide:** Complete user guide with interactive button maps for all inline keyboards and main keyboard (`wiki/user-guide.md`)
+- **Elimination of Typed Arguments:** Full payment workflow documented as button-only flow; user can browse, select branch, choose payment method, and confirm — entirely via inline buttons
+- **Graceful Spinner Resolution:** Verified `answerCallbackQuery` is called on every inline button handler to dismiss Telegram loading spinner
+- **Agile Progress Verification:** GitHub Project Board Sprint 5 cards updated with advanced UI integration tasks linked to developer assignments
+
+### Changed
+- `wiki/user-guide.md` — Added full Interactive Button Map section with ASCII diagrams for all keyboards
+- `README.md` — Added production bot handle link, wiki documentation table, and coverage run script
+- `wiki/testing-report.md` — Updated to v1.1.0 with Week 11 test results
+
+### Added
+- `wiki/test-matrix.md` — New: 20-case test matrix (boundary, negative, happy path) — Week 11 deliverable
+
+---
+
 ## [1.0.0] - 2026-06-01
 
 ### 🎉 Initial Release
